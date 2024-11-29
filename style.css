@@ -1,0 +1,151 @@
+html,
+body {
+    padding: 0;
+    margin: 0;
+    color: white;
+}
+
+body {
+    background-color: black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    width: 450px;
+    height: 450px;
+    border: 1px solid black;
+    margin: 0 auto;
+    align-self: center;
+}
+
+.cell {
+    border: 1px solid white;
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+
+.cell:hover {
+    background: rgba(104, 104, 104, 0.248);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    width: 100vw;
+    height: 100vh;
+    justify-content: space-evenly;
+}
+
+.main h1 {
+    text-align: center;
+}
+
+.x::before {
+    content: "X";
+}
+
+.o::before {
+    content: "O";
+}
+
+.cell {
+    font-size: 80px;
+    font-family: monospace;
+    text-align: center;
+    line-height: 140px;
+}
+
+.statistic table {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.statistic td:first-child {
+    text-align: left;
+    font-weight: bold;
+}
+
+.statistic {
+    background-color: #222;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 20%;
+    left: 12%;
+    width: auto;
+}
+
+.statistic table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.statistic td {
+    border: 1px solid #fff;
+    padding: 5px;
+    text-align: right;
+    width: auto;
+}
+
+.reset {
+    background: #ff2a4c;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.reset:hover {
+    filter: brightness(80%);
+}
+
+.reset-stat {
+    vertical-align: bottom;
+    width: 29.5px;
+    height: 29.2px;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.game-func {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+    height: 30px;
+}
+
+.winO,
+.loseO,
+.winX,
+.loseX {
+    min-width: 25px!important;
+}
+
+.flex-step {
+    align-items: center;
+    justify-content: space-between;
+    height: 30px;
+}
+
+.step {
+    cursor: pointer;
+    background: #3f3f3f;
+    padding: 1px 7px;
+    border-radius: 3px;
+    user-select: none;
+}
