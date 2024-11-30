@@ -19,30 +19,30 @@
 
         <div class="statistic">
             <div class="flex flex-step">
-                <h4>Сейчас ходит: <span class="currentPlayer"></span></h4>
+                <h4>Current player: <span class="currentPlayer"></span></h4>
                 <h4><span class="step">O</span></h4>
             </div>
 
             <div class="flex">
                 <table>
                     <tr>
-                        <td>Выигрыш X:</td>
+                        <td>Win X:</td>
                         <td class="winX"></td>
 
                     </tr>
                     <tr>
-                        <td>Проигрыш X:</td>
+                        <td>Lose X:</td>
                         <td class="loseX"></td>
                     </tr>
                 </table>
                 <table style="margin-left: 10px;">
                     <tr>
-                        <td>Выигрыш O:</td>
+                        <td>Win O:</td>
                         <td class="winO"></td>
 
                     </tr>
                     <tr>
-                        <td>Проигрыш O:</td>
+                        <td>Lose O:</td>
                         <td class="loseO"></td>
                     </tr>
                 </table>
@@ -50,13 +50,27 @@
 
             <div class="game-func">
                 <button class="reset">Reset game</button>
-                <h5>Ничьи: <span class="draws"></span></h5>
+                <h5>Draws: <span class="draws"></span></h5>
                 <div class="reset-img">
                     <img src="https://i.imgur.com/VxWOVg3.png" alt="Reset statistic" title="Reset statistic" class="reset-stat">
                 </div>
             </div>
 
 
+        </div>
+
+        <div class="modal-window">
+            <div class="d-flex">
+                <div class="inner">
+                    <div class="winner-box">
+                        <h3><span class="winner"></span></h3>
+                    </div>
+                    <div class="actions">
+                        <button class="ok">Ok</button>
+                        <button class="newGame reset">New game</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

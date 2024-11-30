@@ -12,6 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         [3, 5, 7]
     ];
 
+    const modalWindow = document.querySelector(".modal-window");
     const notPlayer = document.querySelector(".step");
 
     let answersX = [];
@@ -53,6 +54,7 @@ document.addEventListener("DOMContentLoaded", function() {
     notPlayer.addEventListener("click", changePlayer);
 
     function checkWinner() {
+        const winner = document.querySelector('.winner');
         for (let i = 0; i < wins.length; i++) {
             const winCombination = wins[i];
             const xWin = winCombination.every(index => answersX.includes(index.toString()));
@@ -61,22 +63,25 @@ document.addEventListener("DOMContentLoaded", function() {
             if (xWin) {
                 winX.textContent = (parseInt(winX.textContent) || 0) + 1;
                 loseO.textContent = (parseInt(loseO.textContent) || 0) + 1;
-                setTimeout(() => alert('X wins!'), 100);
                 game.removeEventListener('click', сellClick);
+                winner.innerHTML = 'Выиграл: X!';
+                modalWindow.style.display = "block";
                 return;
             }
 
             if (oWin) {
                 winO.textContent = (parseInt(winO.textContent) || 0) + 1;
                 loseX.textContent = (parseInt(loseX.textContent) || 0) + 1;
-                setTimeout(() => alert('O wins!'), 100);
                 game.removeEventListener('click', сellClick);
+                winner.innerHTML = 'Выиграл: O!';
+                modalWindow.style.display = "block";
                 return;
             }
         }
 
         if (answersX.length + answersO.length === 9) {
-            setTimeout(() => alert('It\'s a draw!'), 100);
+            winner.innerHTML = 'Ничья!';
+            modalWindow.style.display = "block";
             draws.textContent = (parseInt(draws.textContent) || 0) + 1;
         }
     }
@@ -110,22 +115,26 @@ document.addEventListener("DOMContentLoaded", function() {
     game.addEventListener("click", сellClick);
 
     function reset() {
-        const resetBtn = document.querySelector(".reset");
+        const resetBtn = document.querySelectorAll(".reset");
 
-        resetBtn.addEventListener("click", () => {
-            const cells = document.querySelectorAll('.cell');
-            cells.forEach(cell => {
-                cell.classList.remove("x", "o");
+        resetBtn.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const cells = document.querySelectorAll('.cell');
+                cells.forEach(cell => {
+                    cell.classList.remove("x", "o");
+                });
+                answersX = [];
+                answersO = [];
+
+                modalWindow.style.display = "none";
+
+                currentPlayer = 0;
+                notPlayer.style.cursor = "pointer";
+                notPlayer.addEventListener("click", changePlayer);
+                checkState();
+
+                game.addEventListener("click", сellClick);
             });
-            answersX = [];
-            answersO = [];
-
-            currentPlayer = 0;
-            notPlayer.style.cursor = "pointer";
-            notPlayer.addEventListener("click", changePlayer);
-            checkState();
-
-            game.addEventListener("click", сellClick);
         });
     }
     reset();
@@ -148,4 +157,13 @@ document.addEventListener("DOMContentLoaded", function() {
         })
     }
     resetStat();
+
+    function btnOk() {
+        const ok = document.querySelector('.ok');
+        ok.addEventListener("click", () => {
+            modalWindow.style.display = "none";
+        })
+    }
+    btnOk();
+
 });
